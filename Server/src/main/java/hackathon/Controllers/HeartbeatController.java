@@ -1,6 +1,6 @@
 package hackathon.Controllers;
 
-import hackathon.Models.Heartbeat;
+import hackathon.ViewModels.HeartbeatViewModel;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class HeartbeatController {
-    private static final String template = "Hello, %s!";
-
     @RequestMapping("/greeting")
-    public Heartbeat heartbeat() {
-        return new Heartbeat();
+    public HeartbeatViewModel heartbeat() {
+        return new HeartbeatViewModel();
     }
 }
