@@ -1,35 +1,66 @@
-// More info on Webpack's Node API here: https://webpack.github.io/docs/node.js-api.html
-// Allowing console calls below since this is a build file.
-/* eslint-disable no-console */
-import webpack from 'webpack';
-import config from '../webpack.config.prod';
-import {chalkError, chalkSuccess, chalkWarning, chalkProcessing} from './chalkConfig';
+/**
+ * React Static Boilerplate
+ * https://github.com/kriasoft/react-static-boilerplate
+ *
+ * Copyright © 2015-present Kriasoft, LLC. All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
 
-process.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.
+/* eslint-disable no-console, global-require */
 
-console.log(chalkProcessing('Generating minified bundle. This will take a moment...'));
+const fs = require('fs');
+const rimraf = require('rimraf');
+const ejs = require('ejs');
+const webpack = require('webpack');
+const task = require('./task');
+const config = require('./config');
 
-webpack(config).run((error, stats) => {
-  if (error) { // so a fatal error occurred. Stop here.
-    console.log(chalkError(error));
-    return 1;
-  }
+// Copy ./index.html into the /public folder
+const html = task('html', () => {
+  const webpackConfig = require('./webpack.config');
+  const assets = JSON.parse(fs.readFileSync('./public/dist/assets.json', 'utf8'));
+  const template = fs.readFileSync('./public/index.ejs', 'utf8');
+  const render = ejs.compile(template, { filename: './public/index.ejs' });
+  const output = render({ debug: webpackConfig.debug, bundle: assets.main.js, config });
+  fs.writeFileSync('./public/index.html', output, 'utf8');
+});
 
-  const jsonStats = stats.toJson();
+// Generate sitemap.xml
+const sitemap = task('sitemap', () => {
+  const urls = require('../src/routes.json')
+    .filter(x => !x.path.includes(':'))
+    .map(x => ({ loc: x.path }));
+  const template = fs.readFileSync('./public/sitemap.ejs', 'utf8');
+  const render = ejs.compile(template, { filename: './public/sitemap.ejs' });
+  const output = render({ config, urls });
+  fs.writeFileSync('public/sitemap.xml', output, 'utf8');
+});
 
-  if (jsonStats.hasErrors) {
-    return jsonStats.errors.map(error => console.log(chalkError(error)));
-  }
+// Bundle JavaScript, CSS and image files with Webpack
+const bundle = task('bundle', () => {
+  const webpackConfig = require('./webpack.config');
+  return new Promise((resolve, reject) => {
+    webpack(webpackConfig).run((err, stats) => {
+      if (err) {
+        reject(err);
+      } else {
+        console.log(stats.toString(webpackConfig.stats));
+        resolve();
+      }
+    });
+  });
+});
 
-  if (jsonStats.hasWarnings) {
-    console.log(chalkWarning('Webpack generated the following warnings: '));
-    jsonStats.warnings.map(warning => console.log(chalkWarning(warning)));
-  }
-
-  console.log(`Webpack stats: ${stats}`);
-
-  // if we got this far, the build succeeded.
-  console.log(chalkSuccess('Your app is compiled in production mode in /dist. It\'s ready to roll!'));
-
-  return 0;
+//
+// Build website into a distributable format
+// -----------------------------------------------------------------------------
+module.exports = task('build', () => {
+  global.DEBUG = process.argv.includes('--debug') || false;
+  rimraf.sync('public/dist/*', { nosort: true, dot: true });
+  return Promise.resolve()
+    .then(bundle)
+    .then(html)
+    .then(sitemap);
 });
