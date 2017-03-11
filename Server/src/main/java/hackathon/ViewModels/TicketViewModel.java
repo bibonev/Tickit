@@ -1,5 +1,7 @@
 package hackathon.ViewModels;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -59,12 +61,12 @@ public class TicketViewModel {
         return price;
     }
 
-    public Date getDateOfEvent() {
-        return dateOfEvent;
+    public String getDateOfEvent() {
+        return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(dateOfEvent);
     }
 
-    public Date getDatePosted() {
-        return datePosted;
+    public String getDatePosted() {
+        return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(datePosted);
     }
 
 }
