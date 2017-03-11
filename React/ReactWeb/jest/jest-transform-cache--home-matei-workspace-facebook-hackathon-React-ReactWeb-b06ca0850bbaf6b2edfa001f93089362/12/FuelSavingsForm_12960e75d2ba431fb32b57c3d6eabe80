@@ -1,0 +1,94 @@
+/* istanbul ignore next */'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _createClass = function () {function defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}return function (Constructor, protoProps, staticProps) {if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;};}();var /* istanbul ignore next */_react = require('react'); /* istanbul ignore next */var _react2 = _interopRequireDefault(_react);
+var /* istanbul ignore next */_FuelSavingsResults = require('./FuelSavingsResults'); /* istanbul ignore next */var _FuelSavingsResults2 = _interopRequireDefault(_FuelSavingsResults);
+var /* istanbul ignore next */_FuelSavingsTextInput = require('./FuelSavingsTextInput'); /* istanbul ignore next */var _FuelSavingsTextInput2 = _interopRequireDefault(_FuelSavingsTextInput);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self, call) {if (!self) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call && (typeof call === "object" || typeof call === "function") ? call : self;}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;}var
+
+FuelSavingsForm = function (_React$Component) {_inherits(FuelSavingsForm, _React$Component);
+  function /* istanbul ignore next */FuelSavingsForm(props, context) {/* istanbul ignore next */_classCallCheck(this, FuelSavingsForm);var _this = _possibleConstructorReturn(this, (FuelSavingsForm.__proto__ || Object.getPrototypeOf(FuelSavingsForm)).call(this,
+    props, context));
+
+    /* istanbul ignore next */_this.save = /* istanbul ignore next */_this.save.bind( /* istanbul ignore next */_this);
+    /* istanbul ignore next */_this.onTimeframeChange = /* istanbul ignore next */_this.onTimeframeChange.bind( /* istanbul ignore next */_this);
+    /* istanbul ignore next */_this.fuelSavingsKeypress = /* istanbul ignore next */_this.fuelSavingsKeypress.bind( /* istanbul ignore next */_this); /* istanbul ignore next */return _this;
+  }_createClass(FuelSavingsForm, [{ key: 'onTimeframeChange', value: function onTimeframeChange(
+
+    e) {
+      this.props.calculateFuelSavings(this.props.fuelSavings, 'milesDrivenTimeframe', e.target.value);
+    } }, { key: 'fuelSavingsKeypress', value: function fuelSavingsKeypress(
+
+    name, value) {
+      this.props.calculateFuelSavings(this.props.fuelSavings, name, value);
+    } }, { key: 'save', value: function save()
+
+    {
+      this.props.saveFuelSavings(this.props.fuelSavings);
+    } }, { key: 'render', value: function render()
+
+    {/* istanbul ignore next */var
+      fuelSavings = this.props.fuelSavings;
+
+      return (
+        /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */null,
+          /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'h2', /* istanbul ignore next */null, /* istanbul ignore next */'Fuel Savings Analysis'),
+          /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'table', /* istanbul ignore next */null,
+            /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'tbody', /* istanbul ignore next */null,
+              /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'tr', /* istanbul ignore next */null,
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'td', /* istanbul ignore next */null, /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'label', /* istanbul ignore next */{ htmlFor: 'newMpg' }, /* istanbul ignore next */'New Vehicle MPG')),
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'td', /* istanbul ignore next */null, /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_FuelSavingsTextInput2.default, /* istanbul ignore next */{ onChange: this.fuelSavingsKeypress, name: 'newMpg', value: fuelSavings.newMpg }))),
+
+
+              /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'tr', /* istanbul ignore next */null,
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'td', /* istanbul ignore next */null, /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'label', /* istanbul ignore next */{ htmlFor: 'tradeMpg' }, /* istanbul ignore next */'Trade-in MPG')),
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'td', /* istanbul ignore next */null, /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_FuelSavingsTextInput2.default, /* istanbul ignore next */{ onChange: this.fuelSavingsKeypress, name: 'tradeMpg', value: fuelSavings.tradeMpg }))),
+
+
+              /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'tr', /* istanbul ignore next */null,
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'td', /* istanbul ignore next */null, /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'label', /* istanbul ignore next */{ htmlFor: 'newPpg' }, /* istanbul ignore next */'New Vehicle price per gallon')),
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'td', /* istanbul ignore next */null, /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_FuelSavingsTextInput2.default, /* istanbul ignore next */{ onChange: this.fuelSavingsKeypress, name: 'newPpg', value: fuelSavings.newPpg }))),
+
+
+              /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'tr', /* istanbul ignore next */null,
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'td', /* istanbul ignore next */null, /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'label', /* istanbul ignore next */{ htmlFor: 'tradePpg' }, /* istanbul ignore next */'Trade-in price per gallon')),
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'td', /* istanbul ignore next */null, /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_FuelSavingsTextInput2.default, /* istanbul ignore next */{ onChange: this.fuelSavingsKeypress, name: 'tradePpg', value: fuelSavings.tradePpg }))),
+
+
+              /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'tr', /* istanbul ignore next */null,
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'td', /* istanbul ignore next */null, /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'label', /* istanbul ignore next */{ htmlFor: 'milesDriven' }, /* istanbul ignore next */'Miles Driven')),
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'td', /* istanbul ignore next */null,
+                  /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_FuelSavingsTextInput2.default, /* istanbul ignore next */{
+                    onChange: this.fuelSavingsKeypress,
+                    name: 'milesDriven',
+                    value: fuelSavings.milesDriven }), /* istanbul ignore next */'miles per',
+
+                  /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'select', /* istanbul ignore next */{
+                      name: 'milesDrivenTimeframe',
+                      onChange: this.onTimeframeChange,
+                      value: fuelSavings.milesDrivenTimeframe },
+                    /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'option', /* istanbul ignore next */{ value: 'week' }, /* istanbul ignore next */'Week'),
+                    /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'option', /* istanbul ignore next */{ value: 'month' }, /* istanbul ignore next */'Month'),
+                    /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'option', /* istanbul ignore next */{ value: 'year' }, /* istanbul ignore next */'Year')))),
+
+
+
+              /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'tr', /* istanbul ignore next */null,
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'td', /* istanbul ignore next */null, /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'label', /* istanbul ignore next */null, /* istanbul ignore next */'Date Modified')),
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'td', /* istanbul ignore next */null, fuelSavings.dateModified)))),
+
+
+
+
+          /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'hr', /* istanbul ignore next */null),
+
+          fuelSavings.necessaryDataIsProvidedToCalculateSavings && /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_FuelSavingsResults2.default, /* istanbul ignore next */{ savings: fuelSavings.savings }),
+          /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'input', /* istanbul ignore next */{ type: 'submit', value: 'Save', onClick: this.save })));
+
+
+    } }]);return FuelSavingsForm;}( /* istanbul ignore next */_react2.default.Component);
+
+
+FuelSavingsForm.propTypes = {
+  saveFuelSavings: /* istanbul ignore next */_react.PropTypes.func.isRequired,
+  calculateFuelSavings: /* istanbul ignore next */_react.PropTypes.func.isRequired,
+  fuelSavings: /* istanbul ignore next */_react.PropTypes.object.isRequired }; /* istanbul ignore next */exports.default =
+
+
+FuelSavingsForm;

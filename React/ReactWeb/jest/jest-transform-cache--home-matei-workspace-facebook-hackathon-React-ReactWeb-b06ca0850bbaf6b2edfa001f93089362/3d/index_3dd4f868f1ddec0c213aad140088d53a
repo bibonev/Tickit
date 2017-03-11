@@ -1,0 +1,10 @@
+/* istanbul ignore next */'use strict';Object.defineProperty(exports, "__esModule", { value: true });var /* istanbul ignore next */_redux = require('redux');
+var /* istanbul ignore next */_fuelSavingsReducer = require('./fuelSavingsReducer'); /* istanbul ignore next */var _fuelSavingsReducer2 = _interopRequireDefault(_fuelSavingsReducer);
+var /* istanbul ignore next */_reactRouterRedux = require('react-router-redux'); /* istanbul ignore next */function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+var rootReducer = /* istanbul ignore next */(0, _redux.combineReducers)({
+  fuelSavings: /* istanbul ignore next */_fuelSavingsReducer2.default,
+  routing: /* istanbul ignore next */_reactRouterRedux.routerReducer }); /* istanbul ignore next */exports.default =
+
+
+rootReducer;

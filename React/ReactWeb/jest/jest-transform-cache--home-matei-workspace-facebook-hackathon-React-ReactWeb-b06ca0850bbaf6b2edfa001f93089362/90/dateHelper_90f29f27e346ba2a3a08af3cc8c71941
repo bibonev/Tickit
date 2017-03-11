@@ -1,0 +1,7 @@
+/* istanbul ignore next */"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.getFormattedDateTime = getFormattedDateTime; /* istanbul ignore next */exports.
+
+
+
+padLeadingZero = padLeadingZero;function getFormattedDateTime() {/* istanbul ignore next */var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Date();return (/* istanbul ignore next */date.getMonth() + 1 + "/" + date.getDate() + " " + date.getHours() + ":" + padLeadingZero(date.getMinutes()) + ":" + padLeadingZero(date.getSeconds()));}function padLeadingZero(value) {
+  return value > 9 ? value : /* istanbul ignore next */"0" + value;
+}
