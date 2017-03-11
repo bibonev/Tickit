@@ -8,7 +8,6 @@ import java.util.Date;
  * Created by boyanbonev on 11/03/2017.
  */
 @Entity
-@Table(name = "Ticket")
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,7 +29,7 @@ public class Ticket {
     private double price;
 
     @NotNull
-    private Date dateOfEvent;
+    private Date dateEvent;
 
     @NotNull
     private Date datePosted;
@@ -41,7 +40,7 @@ public class Ticket {
             String name,
             String description,
             double price,
-            Date dateOfEvent,
+            Date dateEvent,
             Date datePosted
     ) {
         this.userId = userId;
@@ -49,7 +48,7 @@ public class Ticket {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.dateOfEvent = dateOfEvent;
+        this.dateEvent = dateEvent;
         this.datePosted = datePosted;
     }
 
@@ -101,12 +100,12 @@ public class Ticket {
         this.price = price;
     }
 
-    public Date getDateOfEvent() {
-        return dateOfEvent;
+    public Date getDateEvent() {
+        return dateEvent;
     }
 
-    public void setDateOfEvent(Date dateOfEvent) {
-        this.dateOfEvent = dateOfEvent;
+    public void setDateEvent(Date dateEvent) {
+        this.dateEvent = dateEvent;
     }
 
     public Date getDatePosted() {
