@@ -1,11 +1,4 @@
-/**
- * app.js
- *
- * This is the entry file for the application, only setup and boilerplate
- * code.
- */
 
-// Needed for redux-saga es6 generator support
 import 'babel-polyfill';
 
 // Import all the third party stuff
@@ -16,7 +9,7 @@ import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { useScroll } from 'react-router-scroll';
 import 'sanitize.css/sanitize.css';
-
+import injectTapEventPlugin from 'react-tap-event-plugin'
 // Import root app
 import App from 'containers/App';
 
@@ -26,6 +19,7 @@ import { makeSelectLocationState } from 'containers/App/selectors';
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
 
+injectTapEventPlugin();
 // Load the favicon, the manifest.json file and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
 import '!file-loader?name=[name].[ext]!./favicon.ico';
