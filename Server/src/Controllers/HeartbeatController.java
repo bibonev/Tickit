@@ -1,7 +1,7 @@
 package Controllers;
 
+import Models.Heartbeat;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -9,4 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class HeartbeatController {
+    private static final String template = "Hello, %s!";
+
+    @RequestMapping("/greeting")
+    public Heartbeat heartbeat() {
+        return new Heartbeat();
+    }
 }
