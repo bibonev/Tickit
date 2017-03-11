@@ -12,7 +12,7 @@ import java.util.Date;
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     @NotNull
     private int userId;
@@ -34,4 +34,12 @@ public class Ticket {
 
     @NotNull
     private Date datePosted;
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

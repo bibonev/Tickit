@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by boyanbonev on 11/03/2017.
  */
 public class TicketViewModel {
-    private final int id;
+    private final long id;
     private final int userId;
     private final int typeId;
     private final String name;
@@ -18,7 +18,7 @@ public class TicketViewModel {
     private final Date datePosted;
 
     public TicketViewModel(
-        int id,
+        long id,
         int userId,
         int typeId,
         String name,
@@ -37,7 +37,7 @@ public class TicketViewModel {
         this.datePosted = datePosted;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
