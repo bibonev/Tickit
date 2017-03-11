@@ -19,11 +19,12 @@ import { Provider } from 'react-redux';
 import store from './store';
 import router from './router';
 import history from './history';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 let routes = require('./routes.json').default; // Loaded with utils/routes-loader.js
 
 const container = document.getElementById('container');
-
+injectTapEventPlugin();
 function renderComponent(component) {
   ReactDOM.render(<Provider store={store}>{component}</Provider>, container);
 }
