@@ -27,7 +27,7 @@ public class Ticket {
     private String description;
 
     @NotNull
-    private int price;
+    private double price;
 
     @NotNull
     private Date dateOfEvent;
@@ -35,11 +35,86 @@ public class Ticket {
     @NotNull
     private Date datePosted;
 
+    public Ticket(
+            int userId,
+            int typeId,
+            String name,
+            String description,
+            double price,
+            Date dateOfEvent,
+            Date datePosted
+    ) {
+        this.userId = userId;
+        this.typeId = typeId;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.dateOfEvent = dateOfEvent;
+        this.datePosted = datePosted;
+    }
+
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
 
     public String getName() {
         return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Date getDateOfEvent() {
+        return dateOfEvent;
+    }
+
+    public void setDateOfEvent(Date dateOfEvent) {
+        this.dateOfEvent = dateOfEvent;
+    }
+
+    public Date getDatePosted() {
+        return datePosted;
+    }
+
+    public void setDatePosted(Date datePosted) {
+        this.datePosted = datePosted;
+    }
+
 }

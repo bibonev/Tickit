@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class TicketController {
+    @Autowired
+    public TicketController(TicketDao ticketDao)
+    {
+        this.ticketDao = ticketDao;
+    }
+
     /**
      * GET /get-by-id  --> Return the id for the ticket having the passed
      * id.
@@ -30,6 +36,5 @@ public class TicketController {
         return "The ticket name is: " + ticketName;
     }
 
-    @Autowired
-    private TicketDao ticketDao;
+    private final TicketDao ticketDao;
 }
