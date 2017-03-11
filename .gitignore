@@ -152,3 +152,5 @@ GitHub.sublime-settings
 .DS_Store
 .idea/
 facebook-hackathon.iml
+
+node_modules

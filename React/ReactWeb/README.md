@@ -1,183 +1,76 @@
-# react-router-redux
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/3129129/22811426/bb69dc06-ef0c-11e6-8092-a0bea9060b35.png"/></p>
 
-[![npm version](https://img.shields.io/npm/v/react-router-redux.svg?style=flat-square)](https://www.npmjs.com/package/react-router-redux) [![npm downloads](https://img.shields.io/npm/dm/react-router-redux.svg?style=flat-square)](https://www.npmjs.com/package/react-router-redux) [![build status](https://img.shields.io/travis/reactjs/react-router-redux/master.svg?style=flat-square)](https://travis-ci.org/reactjs/react-router-redux)
+[![Build status: Linux](https://img.shields.io/travis/coryhouse/react-slingshot.svg?style=flat-square)](https://travis-ci.org/coryhouse/react-slingshot)
+[![Build status: Windows](https://img.shields.io/appveyor/ci/coryhouse/react-slingshot/master.svg?style=flat-square)](https://ci.appveyor.com/project/coryhouse/react-slingshot/branch/master)
+[![Dependency Status](https://david-dm.org/coryhouse/react-slingshot.svg?style=flat-square)](https://david-dm.org/coryhouse/react-slingshot)
+[![Coverage Status](https://img.shields.io/coveralls/coryhouse/react-slingshot/master.svg?style=flat-square)](https://coveralls.io/github/coryhouse/react-slingshot?branch=master)
 
-> **Keep your router in sync with application state** :sparkles:
+React Slingshot is a comprehensive starter kit for rapid application development using React. 
 
-_Formerly known as redux-simple-router_
+Why Slingshot?
 
-You're a smart person. You use [Redux](https://github.com/reactjs/redux) to manage your application state. You use [React Router](https://github.com/reactjs/react-router) to do routing. All is good.
+1. **One command to get started** - Type `npm start` to start development in your default browser.
+2. **Rapid feedback** - Each time you hit save, changes hot reload and linting and automated tests run.
+3. **One command line to check** - All feedback is displayed on a single command line.
+4. **No more JavaScript fatigue** - Slingshot uses the most popular and powerful libraries for working with React.
+5. **Working example app** - The included example app shows how this all works together.
+6. **Automated production build** - Type `npm run build` to do all this:
 
-But the two libraries don't coordinate. You want to do time travel with your application state, but React Router doesn't navigate between pages when you replay actions. It controls an important part of application state: the URL.
+[![React Slingshot Production Build](https://img.youtube.com/vi/qlfDLsX-J0U/0.jpg)](https://www.youtube.com/watch?v=qlfDLsX-J0U)
 
-This library helps you keep that bit of state in sync with your Redux store. We keep a copy of the current location hidden in state. When you rewind your application state with a tool like [Redux DevTools](https://github.com/gaearon/redux-devtools), that state change is propagated to React Router so it can adjust the component tree accordingly. You can jump around in state, rewinding, replaying, and resetting as much as you'd like, and this library will ensure the two stay in sync at all times.
+## Get Started
+1. **Initial Machine Setup**. First time running the starter kit? Then complete the [Initial Machine Setup](https://github.com/coryhouse/react-slingshot#initial-machine-setup).
+2. **Clone the project**. `git clone https://github.com/coryhouse/react-slingshot.git`.
+3. **Run the setup script**. `npm run setup`
+4. **Run the example app**. `npm start -s`
+This will run the automated build process, start up a webserver, and open the application in your default browser. When doing development with this kit, this command will continue watching all your files. Every time you hit save the code is rebuilt, linting runs, and tests run automatically. Note: The -s flag is optional. It enables silent mode which suppresses unnecessary messages during the build.
+5. **Review the example app.** This starter kit includes a working example app that calculates fuel savings. Note how all source code is placed under /src. Tests are placed alongside the file under test. The final built app is placed under /dist. These are the files you run in production.
+6. **Delete the example app files.** Once you're comfortable with how the example app works, you can [delete those files and begin creating your own app](https://github.com/coryhouse/react-slingshot/blob/master/docs/FAQ.md#i-just-want-an-empty-starter-kit). 
+7. **Having issues?** See "Having Issues?" below.
 
-**This library is not _necessary_ for using Redux together with React Router. You can use the two together just fine without any additional libraries. It is useful if you care about recording, persisting, and replaying user actions, using time travel. If you don't care about these features, just [use Redux and React Router directly](http://stackoverflow.com/questions/36722584/how-to-sync-redux-state-and-url-hash-tag-params/36749963#36749963).**
+##Initial Machine Setup
+1. **Install [Node 4.0.0 or greater](https://nodejs.org)** - (5.0 or greater is recommended for optimal build performance). Need to run multiple versions of Node? Use [nvm](https://github.com/creationix/nvm).
+2. **Install [Git](https://git-scm.com/downloads)**. 
+3. **[Disable safe write in your editor](http://webpack.github.io/docs/webpack-dev-server.html#working-with-editors-ides-supporting-safe-write)** to assure hot reloading works properly.
+4. On a Mac? You're all set. If you're on Linux or Windows, complete the steps for your OS below.  
+ 
+**On Linux:**  
 
-## Installation
+ * Run this to [increase the limit](http://stackoverflow.com/questions/16748737/grunt-watch-error-waiting-fatal-error-watch-enospc) on the number of files Linux will watch. [Here's why](https://github.com/coryhouse/react-slingshot/issues/6).    
+`echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p` 
 
-```
-npm install --save react-router-redux
-```
+**On Windows:** 
+ 
+* **Install [Python 2.7](https://www.python.org/downloads/)**. Some node modules may rely on node-gyp, which requires Python on Windows.
+* **Install C++ Compiler**. Browser-sync requires a C++ compiler on Windows. [Visual Studio Express](https://www.visualstudio.com/en-US/products/visual-studio-express-vs) comes bundled with a free C++ compiler. Or, if you already have Visual Studio installed: Open Visual Studio and go to File -> New -> Project -> Visual C++ -> Install Visual C++ Tools for Windows Desktop. The C++ compiler is used to compile browser-sync (and perhaps other Node modules).
 
-## How It Works
+## Having Issues? Try these things first.
+1. Make sure you ran all steps in [Get started](https://github.com/coryhouse/react-slingshot/blob/master/README.md#get-started) including the [initial machine setup](https://github.com/coryhouse/react-slingshot#initial-machine-setup).
+2. Run `npm install` - If you forget to do this, you'll see this: `babel-node: command not found`.
+3. Install the latest version of Node. Or install [Node 5.12.0](https://nodejs.org/download/release/v5.12.0/) if you're having issues on Windows. Node 6 has issues on some Windows machines.
+4. Make sure files with names that begin with a dot (.babelrc, .editorconfig, .eslintrc) are copied to the project directory root. This is easy to overlook if you copy this repository manually.
+5. Don't run the project from a symbolic link. It may cause issues with file watches.
+6. Delete any .eslintrc that you're storing in your user directory. Also, disable any ESLint plugin / custom rules that you've enabled within your editor. These will conflict with the ESLint rules defined in this project.
 
-This library allows you to use React Router's APIs as they are documented. And, you can use redux like you normally would, with a single app state. The library simply enhances a history instance to allow it to synchronize any changes it receives into application state.
+##Technologies
+Slingshot offers a rich development experience using the following technologies:
 
-[history](https://github.com/reactjs/history) + `store` ([redux](https://github.com/reactjs/redux)) &rarr; [**react-router-redux**](https://github.com/reactjs/react-router-redux) &rarr; enhanced [history](https://github.com/reactjs/history) &rarr; [react-router](https://github.com/reactjs/react-router)
+| **Tech** | **Description** |**Learn More**|
+|----------|-------|---|
+|  [React](https://facebook.github.io/react/)  |   Fast, composable client-side components.    | [Pluralsight Course](https://www.pluralsight.com/courses/react-flux-building-applications)  |
+|  [Redux](http://redux.js.org) |  Enforces unidirectional data flows and immutable, hot reloadable store. Supports time-travel debugging. Lean alternative to [Facebook's Flux](https://facebook.github.io/flux/docs/overview.html).| [Getting Started with Redux](https://egghead.io/courses/getting-started-with-redux), [Building React Applications with Idiomatic Redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux), [Pluralsight Course](http://www.pluralsight.com/courses/react-redux-react-router-es6)|
+|  [React Router](https://github.com/reactjs/react-router) | A complete routing library for React | [Pluralsight Course](https://www.pluralsight.com/courses/react-flux-building-applications) |
+|  [Babel](http://babeljs.io) |  Compiles ES6 to ES5. Enjoy the new version of JavaScript today.     | [ES6 REPL](https://babeljs.io/repl/), [ES6 vs ES5](http://es6-features.org), [ES6 Katas](http://es6katas.org), [Pluralsight course](https://www.pluralsight.com/courses/javascript-fundamentals-es6)    |
+| [Webpack](http://webpack.github.io) | Bundles npm packages and our JS into a single file. Includes hot reloading via [react-transform-hmr](https://www.npmjs.com/package/react-transform-hmr). | [Quick Webpack How-to](https://github.com/petehunt/webpack-howto) [Pluralsight Course](https://www.pluralsight.com/courses/webpack-fundamentals)|
+| [Browsersync](https://www.browsersync.io/) | Lightweight development HTTP server that supports synchronized testing and debugging on multiple devices. | [Intro vid](https://www.youtube.com/watch?time_continue=1&v=heNWfzc7ufQ)|
+| [Jest](https://facebook.github.io/jest/) | Automated tests with built-in expect assertions and [Enzyme](https://github.com/airbnb/enzyme) for DOM testing without a browser using Node. | [Pluralsight Course](https://www.pluralsight.com/courses/testing-javascript) |
+| [TrackJS](https://trackjs.com/) | JavaScript error tracking. | [Free trial](https://my.trackjs.com/signup)|  
+| [ESLint](http://eslint.org/)| Lint JS. Reports syntax and style issues. Using [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for additional React specific linting rules. | |
+| [SASS](http://sass-lang.com/) | Compiled CSS styles with variables, functions, and more. | [Pluralsight Course](https://www.pluralsight.com/courses/better-css)|
+| [PostCSS](https://github.com/postcss/postcss) | Transform styles with JS plugins. Used to autoprefix CSS |
+| [Editor Config](http://editorconfig.org) | Enforce consistent editor settings (spaces vs tabs, etc). | [IDE Plugins](http://editorconfig.org/#download) |
+| [npm Scripts](https://docs.npmjs.com/misc/scripts)| Glues all this together in a handy automated build. | [Pluralsight course](https://www.pluralsight.com/courses/npm-build-tool-introduction), [Why not Gulp?](https://medium.com/@housecor/why-i-left-gulp-and-grunt-for-npm-scripts-3d6853dd22b8#.vtaziro8n)  |
 
-## Tutorial
-
-Let's take a look at a simple example.
-
-```js
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { createStore, combineReducers } from 'redux'
-import { Provider } from 'react-redux'
-import { Router, Route, browserHistory } from 'react-router'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-
-import reducers from '<project-path>/reducers'
-
-// Add the reducer to your store on the `routing` key
-const store = createStore(
-  combineReducers({
-    ...reducers,
-    routing: routerReducer
-  })
-)
-
-// Create an enhanced history that syncs navigation events with the store
-const history = syncHistoryWithStore(browserHistory, store)
-
-ReactDOM.render(
-  <Provider store={store}>
-    { /* Tell the Router to use our enhanced history */ }
-    <Router history={history}>
-      <Route path="/" component={App}>
-        <Route path="foo" component={Foo}/>
-        <Route path="bar" component={Bar}/>
-      </Route>
-    </Router>
-  </Provider>,
-  document.getElementById('mount')
-)
-```
-
-Now any time you navigate, which can come from pressing browser buttons or navigating in your application code, the enhanced history will first pass the new location through the Redux store and then on to React Router to update the component tree. If you time travel, it will also pass the new state to React Router to update the component tree again.
-
-#### How do I watch for navigation events, such as for analytics?
-
-Simply listen to the enhanced history via `history.listen`. This takes in a function that will receive a `location` any time the store updates. This includes any time travel activity performed on the store.
-
-```js
-const history = syncHistoryWithStore(browserHistory, store)
-
-history.listen(location => analyticsService.track(location.pathname))
-```
-
-For other kinds of events in your system, you can use middleware on your Redux store like normal to watch any action that is dispatched to the store.
-
-#### What if I use Immutable.js or another state wrapper with my Redux store?
-
-When using a wrapper for your store's state, such as Immutable.js, you will need to change two things from the standard setup:
-
-1. By default, the library expects to find the history state at `state.routing`. If your wrapper prevents accessing properties directly, or you want to put the routing state elsewhere, pass a selector function to access the historystate via the `selectLocationState` option on `syncHistoryWithStore`.
-2. Provide your own reducer function that will receive actions of type `LOCATION_CHANGE` and return the payload merged into the `locationBeforeTransitions` property of the routing state. For example, `state.set("routing", {locationBeforeTransitions: action.payload})`.
-
-These two hooks will allow you to store the state that this library uses in whatever format or wrapper you would like.
-
-#### How do I access router state in a container component?
-
-React Router [provides route information via a route component's props](https://github.com/ReactTraining/react-router/blob/master/docs/Introduction.md#getting-url-parameters). This makes it easy to access them from a container component. When using [react-redux](https://github.com/reactjs/react-redux) to `connect()` your components to state, you can access the router's props from the [2nd argument of `mapStateToProps`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options):
-
-```js
-function mapStateToProps(state, ownProps) {
-  return {
-    id: ownProps.params.id,
-    filter: ownProps.location.query.filter
-  };
-}
-```
-
-You should not read the location state directly from the Redux store. This is because React Router operates asynchronously (to handle things such as dynamically-loaded components) and your component tree may not yet be updated in sync with your Redux state. You should rely on the props passed by React Router, as they are only updated after it has processed all asynchronous code.
-
-#### What if I want to issue navigation events via Redux actions?
-
-React Router provides singleton versions of history (`browserHistory` and `hashHistory`) that you can import and use from anywhere in your application. However, if you prefer Redux style actions, the library also provides a set of action creators and a middleware to capture them and redirect them to your history instance.
-
-```js
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { routerMiddleware, push } from 'react-router-redux'
-
-// Apply the middleware to the store
-const middleware = routerMiddleware(browserHistory)
-const store = createStore(
-  reducers,
-  applyMiddleware(middleware)
-)
-
-// Dispatch from anywhere like normal.
-store.dispatch(push('/foo'))
-```
-
-## Examples
-
-- [examples/basic](/examples/basic) - basic reference implementation
-
-Examples from the community:
-
-* [shakacode/react-webpack-rails-tutorial](https://github.com/shakacode/react-webpack-rails-tutorial) - react-router-redux including **Server Rendering** using [React on Rails](https://github.com/shakacode/react_on_rails/), live at [www.reactrails.com](http://www.reactrails.com/).
-* [davezuko/react-redux-starter-kit](https://github.com/davezuko/react-redux-starter-kit) - popular redux starter kit
-  * **tip**: migrating from react-router-redux `^3.0.0`? use [this commit](https://github.com/davezuko/react-redux-starter-kit/commit/0df26907) as a reference
-* [svrcekmichal/universal-react](https://github.com/svrcekmichal/universal-react) - Universal react app with async actions provided by [svrcekmichal/reasync](https://github.com/svrcekmichal/reasync) package
-* [steveniseki/react-router-redux-example](https://github.com/StevenIseki/react-router-redux-example) - minimal react-router-redux example includes css modules and universal rendering
-* [choonkending/react-webpack-node](https://github.com/choonkending/react-webpack-node) - Full-stack universal Redux App
-* [kuy/treemap-with-router](https://github.com/kuy/treemap-with-router) - An example for react-router-redux with d3's treemap.
-
-&rarr; _Have an example to add? Send us a PR!_ &larr;
-
-## API
-
-#### `routerReducer()`
-
-**You must add this reducer to your store for syncing to work.**
-
-A reducer function that stores location updates from `history`. If you use `combineReducers`, it should be nested under the `routing` key.
-
-#### `history = syncHistoryWithStore(history, store, [options])`
-
-Creates an enhanced history from the provided history. This history changes `history.listen` to pass all location updates through the provided store first. This ensures if the store is updated either from a navigation event or from a time travel action, such as a replay, the listeners of the enhanced history will stay in sync.
-
-**You must provide the enhanced history to your `<Router>` component.** This ensures your routes stay in sync with your location and your store at the same time.
-
-The `options` object takes in the following optional keys:
-
-- `selectLocationState` - (default `state => state.routing`) A selector function to obtain the history state from your store. Useful when not using the provided `routerReducer` to store history state. Allows you to use wrappers, such as Immutable.js.
-- `adjustUrlOnReplay` - (default `true`) When `false`, the URL will not be kept in sync during time travel. This is useful when using `persistState` from Redux DevTools and not wanting to maintain the URL state when restoring state.
-
-#### `push(location)`, `replace(location)`, `go(number)`, `goBack()`, `goForward()`
-
-**You must install `routerMiddleware` for these action creators to work.**
-
-Action creators that correspond with the [history methods of the same name]
-(https://github.com/mjackson/history/blob/master/README.md#navigation). For reference they are defined as follows:
-
-- `push` - Pushes a new location to history, becoming the current location.
-- `replace` - Replaces the current location in history.
-- `go` - Moves backwards or forwards a relative number of locations in history.
-- `goForward` - Moves forward one location. Equivalent to `go(1)`
-- `goBack` - Moves backwards one location. Equivalent to `go(-1)`
-
-Both `push` and `replace` take in a [location descriptor](https://github.com/ReactTraining/history/blob/v2/docs/Glossary.md#locationdescriptor), which can be an object describing the URL or a plain string URL.
-
-These action creators are also available in one single object as `routerActions`, which can be used as a convenience when using Redux's `bindActionCreators()`.
-
-#### `routerMiddleware(history)`
-
-A middleware you can apply to your Redux `store` to capture dispatched actions created by the action creators. It will redirect those actions to the provided `history` instance.
-
-#### `LOCATION_CHANGE`
-
-An action type that you can listen for in your reducers to be notified of route updates. Fires *after* any changes to history.
+The starter kit includes a working example app that puts all of the above to use.
+## Questions?
+Check out the [FAQ](/docs/FAQ.md)
