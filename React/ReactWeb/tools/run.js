@@ -1,13 +1,3 @@
-/**
- * React Static Boilerplate
- * https://github.com/kriasoft/react-static-boilerplate
- *
- * Copyright © 2015-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 const fs = require('fs');
 const ejs = require('ejs');
 const rimraf = require('rimraf');
@@ -18,7 +8,6 @@ const config = require('./config');
 
 global.HMR = !process.argv.includes('--no-hmr'); // Hot Module Replacement (HMR)
 
-// Build the app and launch it in a browser for testing via Browsersync
 module.exports = task('run', () => new Promise((resolve) => {
   rimraf.sync('public/dist/*', { nosort: true, dot: true });
   let count = 0;

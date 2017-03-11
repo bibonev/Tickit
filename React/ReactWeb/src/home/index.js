@@ -25,7 +25,7 @@ class HomePage extends React.Component {
     return (
         <MuiThemeProvider>
       <Layout className={s.content}>
-     <EmailSignUpForm />;
+    
       </Layout>
   </MuiThemeProvider>
     );
