@@ -1,6 +1,6 @@
-package com.hackathon.Controllers;
+package hackathon.Controllers;
 
-import com.hackathon.Models.Heartbeat;
+import hackathon.Models.Heartbeat;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

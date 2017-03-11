@@ -1,4 +1,4 @@
-package com.hackathon.Models;
+package hackathon.Models;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
