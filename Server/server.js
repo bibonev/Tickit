@@ -8,9 +8,14 @@ let config = {
 };
 
 let express = require('express');
+var router = express.Router();
+
 let pg = require('pg');
 let app = express();
 let db = new pg.Client(config);
+module.exports.db = db;
+
+let tickets = require('./tickets');
 
 db.connect(function (err)
 {
@@ -23,6 +28,11 @@ db.connect(function (err)
 app.get('/', function (req, res)
 {
 	res.send('Hello World!')
+});
+
+app.get('/tickets', function(req, res){
+	var result = tickets.getAllTickets(db);
+	res.send(result);
 });
 
 app.listen(8080, function ()
