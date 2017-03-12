@@ -13,7 +13,7 @@ export const credentials = (state=SUGGESTIONS_INITIAL, action) => {
             return Object.assign({}, state, {
                 logged: {
                     user: action.user,
-                    loggedIn: false
+                    loggedIn: true
                 }
             });
         case 'CLEAR_CREDENTIALS':

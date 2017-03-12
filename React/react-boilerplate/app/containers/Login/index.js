@@ -3,6 +3,12 @@ import styled from 'styled-components'
 import TextField from 'material-ui/TextField'
 import FlatButton from 'material-ui/FlatButton'
 
+import React, {Component}  from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { loginUsingCredentials } from '../../actions/Login';
+
 const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
@@ -29,8 +35,11 @@ flex-wrap:wrap;
 }
 `
 
-export default class Login extends React.PureComponent {
+class Login extends React.PureComponent {
     render() {
+        const {loginUsingCredentials} = this.props;
+        const onButtonClicked = (username, password) => loginUsingCredentials(username, password);
+
         return (
             <Wrapper>
                 <form>
@@ -38,17 +47,35 @@ export default class Login extends React.PureComponent {
                     Login
                 </Text>
                 <span><TextField
+                    ref='username'
                     hintText="@username"
                     type="text"
                 /></span>
             <span>  <TextField
+                    ref='password'
                     hintText="@password"
                     type="password"
                 /></span>
-                    <FlatButton label="Login" primary={true} />
+                    <FlatButton label="Login" primary={true} onClick={e => {
+                            onButtonClicked(
+                                ReactDOM.findDOMNode(this.refs.username).value,
+                                ReactDOM.findDOMNode(this.refs.password).value
+                            );
+                        }}/>
             </form>
 
             </Wrapper>
-        )
+        );
     }
 }
+
+const mapStateToProps = state => ({
+    username: state.credentials.username,
+    password: state.credentials.password
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+     loginUsingCredentials 
+}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
