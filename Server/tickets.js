@@ -1,17 +1,17 @@
-function getAllTickets(db){
-    var rows = [];
-    db.query("SELECT * FROM Ticket", function(err, result){
+let tickets = function getAllTickets(db){
+    db.query("SELECT * FROM \"Ticket\"", function(err, result){
         if(err){
             console.log("There has been an error processing your request: ", err);
+            return [];
         } else {
-            rows.push(result);
+            console.log("Success: ", result.rows);
+            return result.rows;
         }
     });
-    return rows;
 }
 
 function addTicket(db, values) {
-    db.query("INSERT INTO Ticket (name, user, price, dateEvent, datePosted, type, description) VALUES(${name}, ${user}, ${price}, ${dateEvent}, ${datePosted}, ${type}, &{description})",
+    db.query("INSERT INTO \"Ticket\"(name, \"user\", price, dateEvent, datePosted, type, description) VALUES(${name}, ${user}, ${price}, ${dateEvent}, ${datePosted}, ${type}, &{description})",
     values,
     function(err, result) {
                 if (err) {
@@ -25,6 +25,6 @@ function addTicket(db, values) {
 }
 
 module.exports = {
-  getAllTickets: getAllTickets,
+  getAllTickets: tickets,
   addTicket: addTicket
 };

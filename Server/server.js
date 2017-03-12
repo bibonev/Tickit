@@ -22,12 +22,17 @@ db.connect(function (err)
 	if (err)
 		throw err;
 	console.log('Connected to the database.');
-	db.end();
 });
 
 app.get('/tickets', function(req, res){
-	var result = tickets.getAllTickets(db);
-	res.send(result);
+	db.query("SELECT * FROM \"Ticket\"", function(err, result){
+		if(err){
+			console.log("There has been an error processing your request: ", err);
+		} else {
+			console.log("Success: ", result.rows);
+			res.end(JSON.stringify(result.rows));
+		}
+	});
 });
 
 app.get('/users', function (req, res)
