@@ -6,6 +6,8 @@ import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
 import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
+import Login from 'containers/Login'
+
 
 const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
 const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
@@ -59,7 +61,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
 
         <AppLayout>
             <Wrapper>
-
+                <Login />
             </Wrapper>
 
         </AppLayout>
