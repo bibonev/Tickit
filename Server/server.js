@@ -40,6 +40,11 @@ app.get('/users/:id', function (req, res)
 	res.send(users.getUserById(db, req.id));
 });
 
+app.post('/tickets', function(req, res, next){
+	var result = tickets.addTicket(db, req.body);
+	res.send(result);
+});
+
 app.listen(8080, function ()
 {
 	console.log('Listening on port 8080')
