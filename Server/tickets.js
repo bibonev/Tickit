@@ -1,7 +1,7 @@
 function getAllTickets(db){
     var rows = [];
-    db.query("SELECT * FROM Tickets", function(err, result){
-        if(err != null){
+    db.query("SELECT * FROM Ticket", function(err, result){
+        if(!err){
             rows.push(result);
         }
     });

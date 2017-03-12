@@ -13,9 +13,9 @@ var router = express.Router();
 let pg = require('pg');
 let app = express();
 let db = new pg.Client(config);
-module.exports.db = db;
 
 let tickets = require('./tickets');
+let users = require('./users');
 
 db.connect(function (err)
 {
@@ -25,14 +25,19 @@ db.connect(function (err)
 	db.end();
 });
 
-app.get('/', function (req, res)
-{
-	res.send('Hello World!')
-});
-
 app.get('/tickets', function(req, res){
 	var result = tickets.getAllTickets(db);
 	res.send(result);
+});
+
+app.get('/users', function (req, res)
+{
+	res.send(users.getAllUsers(db));
+});
+
+app.get('/users/:id', function (req, res)
+{
+	res.send(users.getUserById(db, req.id));
 });
 
 app.listen(8080, function ()
